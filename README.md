@@ -1,113 +1,15 @@
-<p align="center">
-  <a href="https://github.com/shaojintian/Best_README_template/">
-    <img src="https://www.google.com/s2/favicons?sz=64&domain=mypikpak.com" alt="Logo" width="80" height="80">
-  </a>
-  <h1 align="center">PikPak自动邀请</h1>
-  <p align="center">
-    ·
-    <a href="https://github.com/LinYuanovo/pikpak_auto_invite/issues">报告Bug</a>
-    ·
-    <a href="https://github.com/LinYuanovo/pikpak_auto_invite/issues">提出新特性</a>
-  </p>
-</p>
-
-基于bilibili平台UP主[纸鸢花的花语](https://space.bilibili.com/67788420/)所公开的源码以及其群管理Atong的pikpak临时碰撞版脚本进行修改的PikPak自动邀请程序，附带图像识别过验证码
-
-<!-- PROJECT SHIELDS -->
-
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-
-<!-- PROJECT LOGO -->
-
-## 目录
-
-- [上手指南](#上手指南)
-  - [使用前的配置](#使用前的配置)
-  - [安装步骤](#安装步骤)
-  - [效果演示](#效果演示)
-- [文件目录说明](#文件目录说明)
-- [作者](#作者)
-
-### 上手指南
-
-###### 使用前的配置
-
-在使用本项目前请确保你具有以下环境
-
-1. Python（如未安装请查看[Python安装教程](https://blog.csdn.net/maiya_yayaya/article/details/131828467?ops_request_misc=&request_id=&biz_id=102&utm_term=python如何安装&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-0-131828467.142^v100^pc_search_result_base7&spm=1018.2226.3001.4187)）
-2. pip（如未安装请查看[pip安装及如何加速安装第三方组件](https://blog.csdn.net/figo0423/article/details/136146344?ops_request_misc=%7B%22request%5Fid%22%3A%22171784122216800226579490%22%2C%22scm%22%3A%2220140713.130102334..%22%7D&request_id=171784122216800226579490&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~baidu_landing_v2~default-7-136146344-null-null.142^v100^pc_search_result_base7&utm_term=pip如何安装&spm=1018.2226.3001.4187)）
-
-###### **安装步骤**
-
-1. 克隆项目到本地，如无法克隆也可以直接从右上角下载zip压缩包到本地解压
-
-```shell
-git clone https://github.com/LinYuanovo/pikpak_auto_invite.git
 ```
-
-2. 进入到项目目录
-
-```shell
-cd pikpak_auto_invite
+version: '3.3'
+services:
+    pikpak_auto_invite:
+        restart: always
+        environment:
+            - INVITE_CODE='Your_invite_code'
+#             - PROXY='http://localhost:7890'
+#             - ADMIN='username'
+#             - PASSWORD='password'
+        port:
+            - 8000:8000
+        container_name: pikpak_auto_invite
+        image: 'saika2077/pikpak_auto_invite:paas'
 ```
-
-3. 安装项目所需依赖（如安装有问题自行换源）
-
-```shell
-pip install -r requirements.txt
-```
-
-###### 效果演示
-
-在项目目录下用终端输入或利用`Pycharm`等工具直接运行`run.py`
-
-```shell
-python run.py
-```
-
-![效果演示](https://raw.githubusercontent.com/LinYuanovo/pic_bed/main/pikpak_auto_invite/7c010670-6d0c-41c0-8ad5-d6dab5e6bf02.png)
-
-如果需要查看请求返回信息，请将主程序`run.py`的`DEBUG_MODE`参数设为True
-
-如果多次出现IP问题可尝试将自己所用的魔法设置为代理，即主程序`run.py`的`PROXY`参数
-
-如果觉得模型不够满意也可以查看我的另一个项目[Ddddocr 自训练今日校园、PikPak验证码模型](https://github.com/LinYuanovo/ddddocr_models)里面包含了几个版本的模型以及数据集，可以自己进行训练
-
-### 文件目录说明
-
-```
-pikpak_auto_invite 
-├── README.md
-├── /models/
-│  │── pikpak3.0.onnx       图像识别模型
-│  │── charsets.json        配置
-├── /temp/                  缓存验证码
-├── run.py                  程序主入口
-├── image.py                处理图片
-└── recognize.py            图像识别
-```
-
-### 说明
-
-本项目仅仅只是在UP主[纸鸢花的花语](https://space.bilibili.com/67788420/)所公开的源码以及其群管理Atong的脚本基础上进行简单修改，加入了图像识别处理验证码，并未进行任何架构上的更改。上传本项目也仅为了用于学习研究以及备份，无任何不良引导，如有侵权请联系我进行删除。如果项目对你有帮助欢迎点点star。
-
-### 作者
-
-临渊
-
-邮箱：<1577242215@qq.com>
-
-<!-- links -->
-
-[your-project-path]:LinYuanovo/pikpak_auto_invite
-[contributors-shield]: https://img.shields.io/github/contributors/LinYuanovo/pikpak_auto_invite.svg?style=flat-square
-[contributors-url]: https://github.com/LinYuanovo/pikpak_auto_invite/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/LinYuanovo/pikpak_auto_invite.svg?style=flat-square
-[forks-url]: https://github.com/LinYuanovo/pikpak_auto_invite/network/members
-[stars-shield]: https://img.shields.io/github/stars/LinYuanovo/pikpak_auto_invite.svg?style=flat-square
-[stars-url]: https://github.com/LinYuanovo/pikpak_auto_invite/stargazers
-[issues-shield]: https://img.shields.io/github/issues/LinYuanovo/pikpak_auto_invite.svg?style=flat-square
-[issues-url]: https://img.shields.io/github/issues/LinYuanovo/pikpak_auto_invite.svg

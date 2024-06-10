@@ -5,7 +5,7 @@ WORKDIR /app
 COPY . .
 
 RUN apt-get update \
-    && apt-get install libglib2.0-dev libgl1-mesa-glx -y \
+    && apt-get install libglib2.0-dev libgl1-mesa-glx wget -y \
     && pip install --no-cache-dir -r requirements.txt
 
 ENTRYPOINT ["bash", "entrypoint.sh"]
